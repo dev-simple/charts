@@ -1,0 +1,19 @@
+<h1>Users (<%= @users_count %>)</h1>
+
+<br>
+<br>
+
+<%= area_chart users_charts_path, label: 'Users',
+                                  xtitle: 'Date',
+                                  ytitle: 'Count',
+                                  height: '500px',
+                                  legend: true,
+                                  download: 'users_charts_by_promo.png',
+                                  library: {
+                                      title: { display: true, text: 'Users Chart by Promo' },
+                                      tooltips: { intersect: false, displayColors: true },
+                                      animation: { duration: 600 }
+                                  }
+%>
+
+<%= pie_chart User.group(:promo).count %>
